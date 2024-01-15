@@ -57,7 +57,7 @@ const CadastroScreen = () => {
     const supabase = createClient();
     const { error, data } = await supabase.auth.signUp({
       email,
-      senha: password
+      password
     });
     if (error) {
       alert(error.message);
