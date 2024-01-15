@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "start": "node ./back/src/server.js"
+  }
+}
