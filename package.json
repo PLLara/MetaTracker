@@ -1,7 +1,7 @@
 {
   "type": "commonjs",
   "scripts": {
-    "start": "node back/src/index.js",
+    "start": "node back/src/server.js",
     "dev": "nodemon --require ts-node/register src/index.ts"
   },
   "dependencies": {
