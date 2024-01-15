@@ -80,8 +80,7 @@ const CadastroScreen = () => {
       </Head>
       {
         auth ?
-          <TelaPrincipal >
-          </TelaPrincipal> : <>
+          <TelaPrincipal /> : <>
 
             <main className="conteudoPrincipal" id="id_conteudoPrincipal">
               <div className={`TelaLogin`} id={`id_telaLogin}`}>
