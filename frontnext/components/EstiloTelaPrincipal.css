@@ -126,7 +126,6 @@ body {
 }
 
 .CabecalhoCartao {
-    background-image: linear-gradient(white, #bbb);
     border-radius: 10px 10px 3px 3px;
     padding: 0 10px;
     height: 15%;

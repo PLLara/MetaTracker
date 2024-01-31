@@ -72,94 +72,104 @@ const CadastroScreen = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Login - Meta Tracker</title>
         <link rel="shortcut icon" type="image/x-icon" href="Login/Imagens/CheckIcon.png" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@500&display=swap" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" />
       </Head>
-      {
-        auth ?
-          <TelaPrincipal /> : <>
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
+        height: '100vh',
+        width: '100vw',
+      }}>
+        {
+          auth ?
+            <TelaPrincipal auth={auth} /> : <>
 
-            <main className="conteudoPrincipal" id="id_conteudoPrincipal">
-              <div className={`TelaLogin`} id={`id_telaLogin}`}>
-                <h2 className="nome_titulo">{telaLogin ? 'Meta Tracker' : 'Realizar cadastro'}</h2>
-                <form className="formularioLogin">
-                  {
-                    !telaLogin && <>
-                      <div className="campoIconeTextoLabel">
-                        <i className="fas fa-solid fa-user"></i>
-                        <label htmlFor={telaLogin ? 'id_UsuarioLogin' : 'id_UsuarioCadastro'}>Usuário</label>
-                      </div>
-                      <input
-                        id={telaLogin ? 'id_UsuarioLogin' : 'id_UsuarioCadastro'}
-                        name="UserID"
-                        className="inputs"
-                        type="text"
-                        value={userID}
-                        onChange={(e) => setUserID(e.target.value)}
-                      />
-                    </>
-                  }
+              <main className="conteudoPrincipal" id="id_conteudoPrincipal" style={{
+              }}>
+                <div className={`TelaLogin`} id={`id_telaLogin}`} >
+                  <h2 className="nome_titulo">{telaLogin ? 'Meta Tracker' : 'Realizar cadastro'}</h2>
+                  <form className="formularioLogin">
+                    {
+                      !telaLogin && <>
+                        <div className="campoIconeTextoLabel">
+                          <i className="fas fa-solid fa-user"></i>
+                          <label htmlFor={telaLogin ? 'id_UsuarioLogin' : 'id_UsuarioCadastro'}>Usuário</label>
+                        </div>
+                        <input
+                          id={telaLogin ? 'id_UsuarioLogin' : 'id_UsuarioCadastro'}
+                          name="UserID"
+                          className="inputs"
+                          type="text"
+                          value={userID}
+                          onChange={(e) => setUserID(e.target.value)}
+                        />
+                      </>
+                    }
 
-                  <div className="campoIconeTextoLabel">
-                    <i className="fas fa-regular fa-envelope"></i>
-                    <label htmlFor="id_emailCadastro">E-mail</label>
-                  </div>
-                  <input
-                    type="email"
-                    className="inputs"
-                    name="emailCadastro"
-                    id="id_emailCadastro"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <div className="campoIconeTextoLabel">
-                    <i className="fas fa-solid fa-key"></i>
-                    <label htmlFor={telaLogin ? 'id_SenhaLogin' : 'id_SenhaCadastro'}>Senha</label>
-                  </div>
-                  <input
-                    id={telaLogin ? 'id_SenhaLogin' : 'id_SenhaCadastro'}
-                    name="Senha"
-                    className="inputs"
-                    type={'password'}
-                    value={password}
-                    onChange={(e) => setSenha(e.target.value)}
-                  />
+                    <div className="campoIconeTextoLabel">
+                      <i className="fas fa-regular fa-envelope"></i>
+                      <label htmlFor="id_emailCadastro">E-mail</label>
+                    </div>
+                    <input
+                      type="email"
+                      className="inputs"
+                      name="emailCadastro"
+                      id="id_emailCadastro"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <div className="campoIconeTextoLabel">
+                      <i className="fas fa-solid fa-key"></i>
+                      <label htmlFor={telaLogin ? 'id_SenhaLogin' : 'id_SenhaCadastro'}>Senha</label>
+                    </div>
+                    <input
+                      id={telaLogin ? 'id_SenhaLogin' : 'id_SenhaCadastro'}
+                      name="Senha"
+                      className="inputs"
+                      type={'password'}
+                      value={password}
+                      onChange={(e) => setSenha(e.target.value)}
+                    />
 
-                </form>
+                  </form>
+                  <button
+                    type="submit"
+                    className="BotaoRealizarLogin"
+                    onClick={() => {
+                      if (telaLogin) {
+                        signIn();
+                      } else {
+                        signUp();
+                      }
+                    }}
+                  >
+                    {telaLogin ? 'Entrar' : 'Cadastrar'}
+                  </button>
+                </div>
+              </main>
+              <br />
+              <br />
+              <br />
+              <center>
                 <button
                   type="submit"
                   className="BotaoRealizarLogin"
                   onClick={() => {
-                    if (telaLogin) {
-                      signIn();
-                    } else {
-                      signUp();
-                    }
+                    setTelaLogin(!telaLogin)
                   }}
                 >
-                  {telaLogin ? 'Entrar' : 'Cadastrar'}
+                  {telaLogin ? 'Ir para Cadastro' : 'Ir para Login'}
                 </button>
-              </div>
-            </main>
-            <br />
-            <br />
-            <br />
-            <center>
-              <button
-                type="submit"
-                className="BotaoRealizarLogin"
-                onClick={() => {
-                  setTelaLogin(!telaLogin)
-                }}
-              >
-                {telaLogin ? 'Ir para Cadastro' : 'Ir para Login'}
-              </button>
-            </center >
-          </>
-      }
+              </center >
+            </>
+        }
+      </div>
+
     </>
   );
 };
