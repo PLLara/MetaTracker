@@ -317,7 +317,7 @@ const TelaPrincipal = (props: {
 
         }}>
           <div className="adicionaCategoria">
-            <FontAwesomeIcon icon={faPlus}>{ }</FontAwesomeIcon>
+            <FontAwesomeIcon icon={faPlus} />
           </div>
         </div>
       </main>
